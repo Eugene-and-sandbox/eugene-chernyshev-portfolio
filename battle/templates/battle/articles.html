@@ -1,0 +1,19 @@
+{% extends 'battle/_base.html' %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<!-- post -->
+{% for item in articles %}
+<div class="col-md-6 col-md-offset-1">
+    <div class="post-body">
+        <div class="post-meta">
+            <a class="post-category cat-2" href="category.html">Day {{ item.parent }}</a>
+            <span class="post-date">{{ item.parent.date }}</span>
+        </div>
+        <h3 class="post-title"><a href="blog-post.html">{{ item.description }}</a></h3>
+    </div>
+</div>
+<div class="col-md-3"><a href="{{ item.article }}">Читати</a></div>
+{% endfor %}
+<!-- /post -->
+{% endblock %}

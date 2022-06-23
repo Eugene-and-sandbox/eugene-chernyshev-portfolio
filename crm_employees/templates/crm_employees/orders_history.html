@@ -1,0 +1,336 @@
+{% extends 'crm_employees/_base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+            role="tab" aria-controls="home" aria-selected="true">Delivery parcel</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+            role="tab" aria-controls="profile" aria-selected="false">Order box</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="row">
+            <div class="col-12">
+                <div style="border-top-left-radius: 0; border-top-right-radius:0" class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>Delivery parcels history</h6>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Order date
+                                        </th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Track number</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Sender info</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Recipient info</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Weight</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Width</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Height</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Length</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Cost</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Discount</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Status</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Deliver date</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Receipt</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Invoce</th>
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in delivery_orders_obj %}
+                                    <tr>
+                                        <td>
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{ item.ordering_date|date:"Y/m/d H:m:s" }}</span>
+                                        </td>
+                                        <td class="text-xs font-weight-bold mb-0">
+                                            <a
+                                                href="{% url 'crm_employees:orderdetails' item.pk %}">{{ item.intarnational_track_number }}</a>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    {% if item.sender.picture.url is not none %}
+                                                    <img src="{{ item.sender.picture.url }}"
+                                                        class="avatar avatar-sm me-3" alt="user1">
+                                                    {% else %}
+
+                                                    {% endif %}
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ item.sender.name }}
+                                                        {{ item.sender.surname }}
+                                                    </h6>
+                                                    <p class="text-xs text-secondary mb-0">{{ item.sender.phone }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ item.sender.email }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ item.sender.address }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    {% if item.customer.picture.url is not none %}
+                                                    <img src="{{ item.recipient.picture.url }}"
+                                                        class="avatar avatar-sm me-3" alt="user1">
+                                                    {% else %}
+
+                                                    {% endif %}
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ item.recipient.name }}
+                                                        {{ item.recipient.surname }}</h6>
+                                                    <p class="text-xs text-secondary mb-0">{{ item.recipient.phone }}
+                                                    </p>
+                                                    <p class="text-xs text-secondary mb-0">{{ item.recipient.email }}
+                                                    </p>
+                                                    <p class="text-xs text-secondary mb-0">{{ item.recipient.address }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-xs text-secondary font-weight-bold mb-0">
+                                            {{ item.weight }}
+                                        </td>
+                                        <td class="text-xs text-secondary font-weight-bold mb-0">
+                                            {{ item.width }}
+                                        </td>
+                                        <td class="text-xs text-secondary font-weight-bold mb-0">
+                                            {{ item.height }}
+                                        </td>
+                                        <td class="text-xs text-secondary font-weight-bold mb-0">
+                                            {{ item.length }}
+                                        </td>
+                                        <td class="text-xs text-secondary font-weight-bold mb-0">{{ item.total_amount }}</td>
+                                        <td class="text-xs text-secondary font-weight-bold mb-0">{{ item.discount.value }}%</td>
+                                        <td class="text-xs text-secondary font-weight-bold mb-0">
+                                            {% if item.completed_at is not none %}
+                                            <span class="badge badge-sm bg-gradient-success">Delivered</span>
+                                            {% else %}
+                                            <span class="badge badge-sm bg-gradient-secondary">in delivery</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-secondary text-xs font-weight-bold">
+                                            {{ item.completed_at|date:"Y/m/d H:m:s" }}</td>
+                                        <td>
+                                            {% if item.receipt.url is not none %}
+                                            <a href="{{ item.receipt.url }}" class="text-info font-weight-bold text-xs"
+                                                data-toggle="tooltip" data-original-title="Edit user" target="_blank">
+                                                Download
+                                            </a>
+                                            {% else %}
+                                            <span class="text-secondary font-weight-bold text-xs">No receipt</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if item.invoice.url is not none %}
+                                            <a href="{{ item.invoice.url }}" class="text-info font-weight-bold text-xs"
+                                                data-toggle="tooltip" data-original-title="Edit user" target="_blank">
+                                                Download
+                                            </a>
+                                            {% else %}
+                                            <span class="text-secondary font-weight-bold text-xs">No invoice</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <nav class="mx-auto" aria-label="Page navigation example mt-4">
+                        <ul class="pagination">
+                            {% if delivery_orders_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ box_order_obj.previous_page_number }}"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% for page in delivery_orders_obj.paginator.page_range %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                            {% endfor %}
+                            {% if delivery_orders_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ delivery_orders_obj.paginator.num_pages }}"
+                                    aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="row">
+            <div class="col-12">
+                <div style="border-top-left-radius: 0; border-top-right-radius:0" class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>Order boxes history</h6>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center justify-content-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Customer
+                                        </th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Size: 10</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Size: 20</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder  text-center opacity-7 ps-2">
+                                            Size: 30</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder  text-center opacity-7 ps-2">
+                                            Oder date</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder  text-center opacity-7 ps-2">
+                                            Status</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder  text-center opacity-7 ps-2">
+                                            Completed at</th>
+                                        {% comment %}
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder  text-center opacity-7 ps-2">
+                                            Cancel order</th>
+                                        {% endcomment %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in box_order_obj %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2">
+                                                <div class="my-auto">
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div>
+                                                            {% if item.customer.picture.url is not none %}
+                                                            <img src="{{ item.customer.picture.url }}"
+                                                                class="avatar avatar-sm me-3" alt="user1">
+                                                            {% else %}
+
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">{{ item.customer.name }}
+                                                                {{ item.customer.surname }}</h6>
+                                                            <p class="text-xs text-secondary mb-0">
+                                                                {{ item.customer.phone }}</p>
+                                                            <p class="text-xs text-secondary mb-0">
+                                                                {{ item.customer.address }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-sm font-weight-bold mb-0">{{ item.size_ten }}</p>
+                                        </td>
+                                        <td>
+                                            <span class="text-sm font-weight-bold">{{ item.size_twenty }}</span>
+                                        </td>
+                                        <td class="text-sm font-weight-bold text-center">
+                                            {{ item.size_thirty }}
+                                        </td>
+                                        <td class="text-sm font-weight-bold">{{ item.ordering_date|date:"Y/m/d H:i:s" }}
+                                        </td>
+                                        <td class="align-middle">
+                                            {% if item.completed_at is not none %}
+                                            <span class="badge badge-sm bg-gradient-success">Delivered</span>
+                                            {% else %}
+                                            <span class="badge badge-sm bg-gradient-secondary">in delivery</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-sm font-weight-bold">
+                                            {% if item.completed_at is not none %}
+                                            {{ item.completed_at|date:"Y/m/d H:i:s" }}
+                                            {% else %}
+                                            {% endif %}
+                                        </td>
+                                        {% comment %}
+                                        <td class="align-middle">
+                                            <button class="btn-white btn btn-xs">Cancel</button>
+                                        </td>
+                                        {% endcomment %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <nav class="mx-auto" aria-label="Page navigation example mt-4">
+                        <ul class="pagination">
+                            {% if box_order_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ box_order_obj.previous_page_number }}"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% for page in box_order_obj.paginator.page_range %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                            </li>
+                            {% endfor %}
+                            {% if box_order_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ box_order_obj.paginator.num_pages }}"
+                                    aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'crm_employees/inc/_side-panel.html' %}
+
+{% include 'crm_employees/inc/_footer.html' %}
+{% endblock %}

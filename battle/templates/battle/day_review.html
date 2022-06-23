@@ -1,0 +1,26 @@
+{% extends 'battle/_base.html' %}
+{% load static %}
+
+{%block title %}{{ title }}{% endblock %}
+{%block content %}
+    {% for item in events %}
+        <div class="col-md-12">
+        <div class="post">
+            {% if events.event_preview.url %}
+                <a class="post-img" href="{% url 'event' item.pk %}"><img src="{{ item.event_preview.url }}" alt=""></a>
+                {% else %}
+                <a class="post-img" href="{% url 'event' item.pk %}"><img src="" alt=""></a>
+            {% endif %}
+            <div class="post-body">
+                <div class="post-meta">
+                    <span class="post-category cat-1">{{ item.day }}</span>
+                    <span class="post-date">{{ item.day.date }} {{ item.event_time }}</span>
+                </div>
+<!--                truncatechars:95-->
+                <h3 class="post-title">{{ item.description | safe }}</h3>
+                <a class="btn btn-info" href="{% url 'event' item.pk %}">Оглянути подію повністю</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

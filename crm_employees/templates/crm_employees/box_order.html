@@ -1,0 +1,39 @@
+{% extends 'crm_employees/_base.html' %}
+{% url 'crm_employees:boxorder' as boxorder %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card mb-4 p-3">
+      <div class="card-header pb-0">
+        <h6>Authors table</h6>
+      </div>
+      <div class="card-body px-0 pt-0 pb-2">
+        <div class="table-responsive p-0">
+          <form action="" method="post">
+            {% csrf_token %}
+            <label for="">Sender info</label>
+            <p>{{ form.customer }}</p>
+            <label for="">Number of boxes 10 kg</label>
+            <p>{{ form.size_ten }}</p>
+            <label for="">Number of boxes 20 kg</label>
+            <p>{{ form.size_twenty }}</p>
+            <label for="">Number of boxes 30 kg</label>
+            <p>{{ form.size_thirty }}</p>
+            {% for item in form %}
+            {{ item.customer }}
+            {{ item.sender.address }}
+            {% endfor %}
+            <button type="submit" class="btn bg-gradient-primary mt-3">Save order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'crm_employees/inc/_side-panel.html' %}
+
+{% include 'crm_employees/inc/_footer.html' %}
+{% endblock %}

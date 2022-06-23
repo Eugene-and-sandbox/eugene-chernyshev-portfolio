@@ -1,0 +1,45 @@
+{% extends 'crm_employees/_base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card mb-4 p-3">
+            <div class="card-header pb-0">
+                <h6>Authors table</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <label for="">Sender info</label>
+                        <p>{{ form.sender }}</p>
+                        <a href="#" class="btn btn-white btn-xs" onClick="window.open('{% url "crm_employees:newsender" %}','pagename','resizable,height=560,width=670'); return false;">Add new sender</a><noscript>You need Javascript to use the previous link or use <a href="{% url 'crm_employees:newsender' %}" target="_blank">Add new sender</a></noscript>
+                        <p><label for="">Recipient info</label></p>
+                        <p>{{ form.recipient }}</p>
+                        <a href="#" class="btn btn-white btn-xs" onClick="window.open('{% url "crm_employees:newrecipient" %}','pagename','resizable,height=560,width=670'); return false;">Add new recipient</a><noscript>You need Javascript to use the previous link or use <a href="{% url 'crm_employees:newrecipient' %}" target="_blank">Add new recipient</a></noscript>
+                        <p><label for="">Weight</label></p>
+                        <p>{{ form.weight }}</p>
+                        <label for="">Width</label>
+                        <p>{{ form.width }}</p>
+                        <label for="">Height</label>
+                        <p>{{ form.height }}</p>
+                        <label for="">Length</label>
+                        <p>{{ form.length }}</p>
+                        <label for="">Choice delivery tariff</label>
+                        <p>{{ form.price }}</p>
+                        <label for="">Discount <span class="text-sm">(0% by default)</span></label>
+                        <p>{{ form.discount }}</p>
+                        <label for="">Courier <span class="text-sm">(0$ by default)</span></label>
+                        <p>{{ form.courier }}</p>
+                        <button type="submit" class="btn bg-gradient-primary mt-3">Save order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'crm_employees/inc/_side-panel.html' %}
+
+{% include 'crm_employees/inc/_footer.html' %}
+{% endblock %}

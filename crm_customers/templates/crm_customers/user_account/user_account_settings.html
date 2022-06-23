@@ -1,0 +1,60 @@
+{% extends 'crm_customers/layout.html' %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<div class="site-section">
+    <div class="container mt-5">
+        <div class="row align-items-center justify-content-center">
+            <table class="table">
+                <thead>
+                    <td colspan="6"><b>Sender information:</b></td>
+                </thead>
+                <tbody>
+                    {% for item in account_info %}
+                    <tr>
+                        <td>Name:</td>
+                        <th scope="row">{{ item.name }} {{ item.surname }}</th>
+                        <td>Email:</td>
+                        <th scope="row">{{ item.email }}</th>
+                        <td>Phone:</td>
+                        <th>{{ item.phone }}</th>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <th scope="row" colspan="4">{{ item.address }}</th>
+                        <td>
+                            <a href="#" class="btn btn-primary">Edit information</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table class="table">
+                <thead>
+                    <td colspan="6"><b>Recepient information:</b></td>
+                </thead>
+                <tbody>
+                    {% for item in account_info %}
+                    <tr>
+                        <td>Name:</td>
+                        <th scope="row">{{ item.recipient.name }} {{ item.recipient.surname }}</th>
+                        <td>Email:</td>
+                        <th scope="row">{{ item.recipient.email }}</th>
+                        <td>Phone:</td>
+                        <th>{{ item.phone }}</th>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <th scope="row" colspan="4">{{ item.address }}</th>
+                        <td>
+                            <a href="#" class="btn btn-primary">Edit information</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr />
+        </div>
+    </div>
+</div>
+{% endblock %}

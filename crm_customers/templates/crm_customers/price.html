@@ -1,0 +1,57 @@
+{% extends 'crm_customers/layout.html' %}
+
+{% block title %}{% endblock %}
+{% block content %}
+    <div class="site-section">
+
+        <div class="container mt-5">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-10 mt-5">
+
+                    <table class="table mt-5">
+                        <thead>
+                        <tr>
+                            <th scope="col">№</th>
+                            <th scope="col">Страна</th>
+                            <th scope="col">Стоимость</th>
+                            <th scope="col">Максимальный вес (кг)</th>
+                            <th scope="col">Действие</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Россия</td>
+                            <td>Море - <b>18</b> шек., Авиа - <b>26</b> шек.</td>
+                            <td>20</td>
+                            <td><a href="{% url 'delivertheparcel' %}" class="btn btn-success">Заказать доставку</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Беларусь</td>
+                            <td>Доставка приостановлена</td>
+                            <td>Доставка приостановлена</td>
+                            <td><a href="#" class="btn btn-warning">Сообщить когда откроют</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Украина</td>
+                            <td>Доставка приостановлена</td>
+                            <td>Доставка приостановлена</td>
+                            <td><a href="#" class="btn btn-warning">Сообщить когда откроют</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Казахстан</td>
+                            <td>Доставка приостановлена</td>
+                            <td>Доставка приостановлена</td>
+                            <td><a href="#" class="btn btn-warning">Сообщить когда откроют</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

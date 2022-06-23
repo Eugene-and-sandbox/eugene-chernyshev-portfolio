@@ -1,0 +1,117 @@
+{% extends 'crm_customers/layout.html' %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<div class="site-section">
+    <div class="container-fluid mt-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-10 mt-5">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                            aria-controls="nav-home" aria-selected="true">Deliveries</a>
+                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                            aria-controls="nav-profile" aria-selected="false">Ordered Boxes</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Order Date</th>
+                                    <th scope="col">Track Number</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Delivery Date</th>
+                                    <th scope="col">Recipient Info</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Courier Services</th>
+                                    <th scope="col">Total Ptice</th>
+                                    <th scope="col">Receipt</th>
+                                    <th scope="col">Invoice</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in user_deliveries %}
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{ item.ordering_date|date:'Y/m/d H:i:s' }}</td>
+                                    <td>{{ item.intarnational_track_number }}</td>
+                                    <td>{{ item.status }}</td>
+                                    <td>{{ item.completed_at|date:'Y/m/d H:i:s' }}</td>
+                                    <td>
+                                        <p>{{ item.recipient.name }} {{ item.recipient.surname }} {{ item.recipient.phone }} {{ item.recipient.address }}</p>
+                                    </td>
+                                    <td>{{ item.delivery_amount }}</td>
+                                    <td>{{ item.courier.price }}$</td>
+                                    <td>{{ item.total_amount }}</td>
+                                    <td>
+                                        {% if item.receipt.url is not none %}
+                                            <a href="{{ item.receipt.url }}" class="text-primary"
+                                                data-toggle="tooltip" data-original-title="Edit user" target="_blank">
+                                                Download
+                                            </a>
+                                            {% else %}
+                                            <span class="text-secondary">No receipt</span>
+                                            {% endif %}
+                                    </a></td>
+                                    <td>
+                                        {% if item.invoice.url is not none %}
+                                            <a href="{{ item.invoice.url }}" class="text-primary"
+                                                data-toggle="tooltip" data-original-title="Edit user" target="_blank">
+                                                Download
+                                            </a>
+                                            {% else %}
+                                            <span class="text-secondary">No invoice</span>
+                                            {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan="4"></th>
+                                    <th scope="col" colspan="3" class="text-center">Payment</th>
+                                </tr>
+                            </thead>
+                            <thead>
+                                <tr class="text-center">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Ordering Date</th>
+                                    <th scope="col">Box of 10</th>
+                                    <th scope="col">Box of 20</th>
+                                    <th scope="col">Box of 30</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Delivery Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in user_boxes %}
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{ item.ordering_date|date:'Y/m/d H:i:s' }}</td>
+                                    <td class="text-center">{{ item.size_ten }}</td>
+                                    <td class="text-center">{{ item.size_twenty }}</td>
+                                    <td class="text-center">{{ item.size_thirty }}</td>
+                                    <td class="text-center">{{ item.total_amount }}</td>
+                                    <td>{{ item.status }}</td>
+                                    <td>{{ item.completed_at|date:'Y/m/d H:i:s' }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

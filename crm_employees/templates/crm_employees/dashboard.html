@@ -1,0 +1,213 @@
+{% extends 'crm_employees/_base.html' %}
+{% load static %}
+{% url 'crm_employees:dashboard' as dashboard %}
+
+{% block title %} {{ request.user.name }} {{ request.user.surname }} {{ title }}{% endblock %}
+{% block content %}
+<div class="row">
+  {% comment %}
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-body p-3">
+        <div class="row">
+          <div class="col-8">
+            <div class="numbers">
+              <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Money</p>
+              <h5 class="font-weight-bolder mb-0">
+                $
+              </h5>
+            </div>
+          </div>
+          <div class="col-4 text-end">
+            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endcomment %}
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-body p-3">
+        <div class="row">
+          <div class="col-8">
+            <div class="numbers">
+              <p class="text-sm mb-0 text-capitalize font-weight-bold">Delivered parcels</p>
+              <h5 class="font-weight-bolder mb-0">
+                {{ parcels_count }}
+              </h5>
+            </div>
+          </div>
+          <div class="col-4 text-end">
+            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-body p-3">
+        <div class="row">
+          <div class="col-8">
+            <div class="numbers">
+              <p class="text-sm mb-0 text-capitalize font-weight-bold">Orders boxes</p>
+              <h5 class="font-weight-bolder mb-0">
+                {{ boxes_count }}
+              </h5>
+            </div>
+          </div>
+          <div class="col-4 text-end">
+            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="card">
+      <div class="card-body p-3">
+        <div class="row">
+          <div class="col-8">
+            <div class="numbers">
+              <p class="text-sm mb-0 text-capitalize font-weight-bold">Customers</p>
+              <h5 class="font-weight-bolder mb-0">
+                {{ customers_count }}
+              </h5>
+            </div>
+          </div>
+          <div class="col-4 text-end">
+            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <div class="card z-index-2">
+      <div class="card-header pb-0">
+        <h6>Last boxes</h6>
+      </div>
+      <div class="card-body p-3">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Ordering date</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in last_boxes_numbers %}
+            <tr>
+              <th scope="row">
+                <a href="{% url 'crm_employees:orderdetails' item.pk %}">{{ item.ordering_date|date:"Y-m-d H:i:s" }}</a>
+              </th>
+              {% if customer.name is not none and customer.surname is not none %}
+              <td>{{ item.email }}</td>
+              {% else %}
+              <td>{{ item.customer.name }} {{ item.customer.surname }}</td>
+              {% endif %}
+              <td>{{ item.status }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- pagination-->
+      <nav style="margin-top: -1rem" class="mx-auto" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            {% if last_boxes_numbers.has_previous %}
+            <a class="page-link" href="?page={{ last_boxes_numbers.previous_page.number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+            {% endif %}
+          </li>
+          {% for page in last_boxes_numbers.paginator.page_range %}
+          <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+          {% endfor %}
+          {% if last_boxes_numbers.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ last_boxes_numbers.paginator.num_pages }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      <!-- /pagination-->
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card z-index-2">
+      <div class="card-header pb-0">
+        <h6>Last deliveries</h6>
+      </div>
+      <div class="card-body p-3">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Ordering date</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in last_deliveries_obj %}
+            <tr>
+              <th scope="row"><a
+                  href="{% url 'crm_employees:orderdetails' item.pk %}">{{ item.ordering_date|date:"Y-m-d H:i:s" }}</a>
+              </th>
+              {% if customer.name is not none and customer.surname is not none %}
+              <td>{{ item.customer.name }} {{ item.customer.surname }}</td>
+              {% else %}
+              <td>{{ item.email }}</td>
+              {% endif %}
+              <td>{{ item.status }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- pagination-->
+      <nav style="margin-top: -1rem" class="mx-auto" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            {% if last_deliveries_obj.has_previous %}
+            <a class="page-link" href="?page={{ last_deliveries_obj.previous_page.number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+            {% endif %}
+          </li>
+          {% for page in last_deliveries_obj.paginator.page_range %}
+          <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+          {% endfor %}
+          {% if last_deliveries_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ last_deliveries_obj.paginator.num_pages }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      <!-- /pagination-->
+    </div>
+  </div>
+</div>
+
+{% include 'crm_employees/inc/_footer.html' %}
+
+{% include 'crm_employees/inc/_side-panel.html' %}
+{% endblock %}

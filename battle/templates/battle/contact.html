@@ -1,0 +1,47 @@
+{% extends 'battle/_base.html' %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<div class="col-md-6">
+    <div class="section-row">
+        <h3>Let's stay in touch</h3>
+        <ul class="list-style">
+            <li><p><strong>Email:</strong> <a href="mailto:eugene_chernyshev@yahoo.com">eugene_chernyshev@yahoo.com</a></p></li>
+            <li><p><strong>Phone:</strong> +38(063)227-96-70</p></li>
+            <li><p><strong>Address:</strong> Ukraine, Lviv (Ready to relocation)</p></li>
+        </ul>
+    </div>
+</div>
+<div class="col-md-5 col-md-offset-1">
+    <div class="section-row">
+        <h3>Send A Message</h3>
+<!--        <form>-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-7">-->
+<!--                    <div class="form-group">-->
+<!--                        <span>Email</span>-->
+<!--                        <input class="input" type="email" name="email">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-7">-->
+<!--                    <div class="form-group">-->
+<!--                        <span>Subject</span>-->
+<!--                        <input class="input" type="text" name="subject">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="form-group">-->
+<!--                        <textarea class="input" name="message" placeholder="Message"></textarea>-->
+<!--                    </div>-->
+<!--                    <button class="primary-button">Submit</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </form>-->
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'battle/_base.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<!-- Header -->
+<header id="header">
+    <!-- Page Header -->
+    <div id="post-header" class="page-header">
+        {{ description.event_time }}
+        {% for item in description %}
+        {% if description.event_preview.url %}
+        <div class="background-img" style="background-image: url('{{ item.event_preview.url }}');"></div>
+        {% else %}
+        <div class="background-img" style="background-image: url('{% static 'defaukt_image.png' %}');"></div>
+        {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="post-meta">
+                        <span class="post-category cat-2">{{ item.day }}</span>
+                        <span class="post-date">{{ item.day.date }} {{ item.event_time }}</span>
+                    </div>
+                    <h1></h1>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- /Page Header -->
+</header>
+<!-- /Header -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Post content -->
+            <div class="col-md-8">
+                <div class="section-row sticky-container">
+                    <div class="main-post">
+                        <!--                        <h3>Lorem Ipsum: when, and when not to use it</h3>-->
+                        <!--                        <figure class="figure-img">-->
+                        <!--                            <img class="img-responsive" src="./img/post-4.jpg" alt="">-->
+                        <!--                            <figcaption>So Lorem Ipsum is bad (not necessarily)</figcaption>-->
+                        <!--                        </figure>-->
+                        {% for item in description %}
+                        <p>{{ item.description | safe }}</p>
+                        <!--                        <blockquote class="blockquote">-->
+                        <!--                            I’ve heard the argument that “lorem ipsum” is effective in wireframing or design because it-->
+                        <!--                            helps people focus on the actual layout, or color scheme, or whatever. What kills me here is-->
+                        <!--                            that we’re talking about creating a user experience that will (whether we like it or not) be-->
+                        <!--                            DRIVEN by words. The entire structure of the page or app flow is FOR THE WORDS.-->
+                        <!--                        </blockquote>-->
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- ad -->
+                <div class="section-row text-center">
+                    <a href="#" style="display: inline-block;margin: auto;">
+                        <img class="img-responsive" src="./img/ad-2.jpg" alt="">
+                    </a>
+                </div>
+                <!-- ad -->
+
+                <!-- author -->
+                <div class="section-row">
+                    <div class="post-author">
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object" src="./img/author.png" alt="">
+                            </div>
+                            <div class="media-body">
+                                <div class="media-heading">
+                                    <h3>Джерело</h3>
+                                </div>
+                                {% for item in description %}
+                                {% if description.url %}
+                                посилання відсутні
+                                {% else %}
+                                <a href="{{ item.url }}" class="text-info" target="_blank">{{ item.url }}</a>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /author -->
+            </div>
+            <!-- /Post content -->
+
+            <!-- aside -->
+            <div class="col-md-4">
+                <!-- ad -->
+                <div class="aside-widget text-center">
+                    <a href="#" style="display: inline-block;margin: auto;">
+                        <img class="img-responsive" src="./img/ad-1.jpg" alt="">
+                    </a>
+                </div>
+                <!-- /ad -->
+            </div>
+            <!-- /aside -->
+        </div>
+    </div>
+</div>
+{% endblock %}

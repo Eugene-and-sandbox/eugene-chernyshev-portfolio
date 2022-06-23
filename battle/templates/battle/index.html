@@ -1,0 +1,196 @@
+{% extends 'battle/_base.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<div class="col-md-12">
+    <div class="section-title text-center">
+        <!--							<h2>Featured Posts</h2>-->
+    </div>
+</div>
+
+<!-- post -->
+{% for item in day_review_page_obj %}
+<div class="col-md-4">
+    <div class="post">
+        <a class="post-img" href="{% url 'review' item.pk %}"><img
+                src="{{ item.daily_image | default:'default_image.png' }}" alt=""></a>
+        <div class="post-body">
+            <div class="post-meta">
+                <span class="post-category cat-2">Day {{ item.day_number }}</span>
+                <span class="post-date">{{ item.date }}</span>
+            </div>
+            <h3 class="post-title"><a href="{% url 'review' item.pk %}">{{ item.day_title }}</a></h3>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!-- /post -->
+<!-- /row -->
+<div class="row">
+    <!-- pagination-->
+    <nav style="margin-top: -5rem" aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                {% if day_review_page_obj.has_previous %}
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                {% endif %}
+            </li>
+            {% for page in day_review_page_obj.paginator.page_range %}
+            <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+            {% endfor %}
+            {% if day_review_page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    <!-- /pagination-->
+</div>
+<!-- row -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <!-- post -->
+            <div class="col-md-12">
+                <div class="post post-thumb">
+                    <a class="post-img" href="blog-post.html"><img src="{{ current_day.daily_image }}" alt=""></a>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <a class="post-category cat-3" href="category.html">Day {{ current_day.day_number }}</a>
+                            <span class="post-date">{{ current_day.date }}</span>
+                        </div>
+                        <h3 class="post-title"><a href="blog-post.html">{{ current_day.day_title }}</a></h3>
+                    </div>
+                </div>
+            </div>
+            <!-- /post -->
+        </div>
+        <div class="row">
+            <!-- post -->
+            {% for item in videos %}
+            <div class="col-md-6">
+                <div class="post post-thumb">
+                    <video src="{{ item.media }}" controls width="100%"></video>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <a class="post-category cat-2" href="category.html">{{ item.parent }}</a>
+                            <span class="post-date">{{ item.parent.date }}</span>
+                        </div>
+                        <h3 class="post-title"><a href="blog-post.html">{{ item.description }}</a></h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- /post -->
+            <!-- pagination-->
+            <nav style="margin-top: -5rem" aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        {% if videos_page_obj.has_previous %}
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        {% endif %}
+                    </li>
+                    {% for page in videos_page_obj.paginator.page_range %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    {% endfor %}
+                    {% if videos_page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <!-- /pagination-->
+        </div>
+    </div>
+    <div class="col-md-4">
+        <!-- post widget -->
+        <div class="aside-widget">
+            <div class="section-title">
+                <h2>Останні фото</h2>
+            </div>
+
+            {% for item in photos_page_obj %}
+            <div class="post post-widget">
+                <a class="post-img" href="blog-post.html"><img src="{{ item.media }}" alt=""></a>
+                <div class="post-body">
+                    <h3 class="post-title"><a href="blog-post.html">{{ item.description }}</a></h3>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- pagination-->
+            <nav style="margin-top: -5rem" aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        {% if photos_page_obj.has_previous %}
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        {% endif %}
+                    </li>
+                    {% for page in photos_page_obj.paginator.page_range %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                    {% endfor %}
+                    {% if photos_page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <!-- /pagination-->
+        </div>
+        <!-- /post widget -->
+
+        <!-- ad -->
+        <div class="aside-widget text-center">
+            <a href="#" style="display: inline-block;margin: auto;">
+                <img class="img-responsive" src="./img/ad-1.jpg" alt="">
+            </a>
+        </div>
+        <!-- /ad -->
+    </div>
+</div>
+<!-- /row -->
+
+
+<!-- catagories -->
+<div class="aside-widget">
+    <div class="section-title">
+        <h2>Втрати окупантів на 29.05.2022</h2>
+    </div>
+    <div class="category-widget">
+        <ul>
+            {% for item in lost_items %}
+            <li><a href="#" class="cat-4">Особистий склад<span>{{ item.team }}</span></a></li>
+            <li><a href="#" class="cat-4">Танки<span>{{ item.tanks }}</span></a></li>
+            <li><a href="#" class="cat-4">Бойові броньовані машини<span>{{ item.battle_armored_vehicle }}</span></a>
+            </li>
+            <li><a href="#" class="cat-4">Артилерійські системи<span>{{ item.artilery_system }}</span></a></li>
+            <li><a href="#" class="cat-4">РСЗО<span>{{ item.rszo }}</span></a></li>
+            <li><a href="#" class="cat-4">ППО<span>{{ item.antyair_missle }}</span></a></li>
+            <li><a href="#" class="cat-4">Літакі<span>{{ item.airplanes }}</span></a></li>
+            <li><a href="#" class="cat-4">Гелікоптери<span>{{ item.helicopters }}</span></a></li>
+            <li><a href="#" class="cat-4">Транспортні засоби<span>{{ item.vehicles }}</span></a></li>
+            <li><a href="#" class="cat-4">Кораблі і катери<span>{{ item.ships_and_boats }}</span></a></li>
+            <li><a href="#" class="cat-4">БПЛА<span>{{ item.bpla }}</span></a></li>
+            <li><a href="#" class="cat-4">Спеціальна техніка<span>35</span>{{ item.special_vehicle }}</a></li>
+            <li><a href="#" class="cat-4">Крилаті рекети<span>{{ item.rockets }}</span></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!-- /catagories -->
+{% endblock %}

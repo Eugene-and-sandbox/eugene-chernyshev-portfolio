@@ -1,0 +1,72 @@
+{% extends 'accounts/_base.html' %}
+{% load static %}
+
+{% block title %}{{ title }} {{ category.title }}{% endblock %}
+{% block content %}
+<body class="">
+    <div class="container position-sticky z-index-sticky top-0">
+      <div class="row">
+        <div class="col-12">
+          <!-- Navbar -->
+          {% include 'accounts/inc/_topnav.html' %}
+          <!-- End Navbar -->
+        </div>
+      </div>
+    </div>
+    <main class="main-content  mt-0">
+      <section class="min-vh-100 mb-8">
+        <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
+          style="background-image: url('../assets/img/curved-images/curved14.jpg');">
+        </div>
+        <div class="container">
+          <div class="row mt-lg-n10 mt-md-n11 mt-n10">
+            <div class="col-xl-12 col-lg-5 col-md-7 mx-auto">
+              <div class="card z-index-0">
+                <div class="card-header text-center pt-4">
+                  <h5>Chooce a project that your interesting from the list bellow by category</h5>
+                </div>
+                <div class="container mb-5">
+                  <div class="row">
+                    {% for item in category %}
+                    <div class="col-xl-6 col-lg-5 col-md-7 mx-auto  mt-4">
+                      <div class="card z-index-0">
+                        <div class="card-header text-center pt-4">
+                          <h5>{{ item.description }}</h5>
+                        </div>
+                        <div class="card-body text-center">
+                          <a href="{% url item.example_url %}">
+                            <img src="{{ item.picture.url }}" alt="{{ item.picture_description }}" width="400">
+                          </a>
+                          <div class="mt-2">
+                            {% if item.tag1 is not none %}
+                            <a class="btn btn-round btn-sm mb-0 btn-outline-success me-2" target="_blank"
+                              href="#">{{ item.tag1 }}</a>
+                            {% else %}
+                            {% endif %}
+  
+                            {% if item.tag2 is not none %}
+                            <a class="btn btn-round btn-sm mb-0 btn-outline-info me-2" target="_blank"
+                              href="#">{{ item.tag2 }}</a>
+                            {% else %}
+                            {% endif %}
+  
+                            {% if item.tag3 is not none %}
+                            <a class="btn btn-round btn-sm mb-0 btn-outline-info me-2" target="_blank"
+                              href="#">{{ item.tag3 }}</a>
+                            {% else %}
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+{% endblock %}

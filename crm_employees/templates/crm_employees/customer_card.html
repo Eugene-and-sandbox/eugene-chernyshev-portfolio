@@ -1,0 +1,200 @@
+{% extends 'crm_employees/_base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+
+<div class="row mt-4">
+    <div class="col-12">
+        {% for item in customer_info %}
+        <div style="position: relative" class="card mb-4 p-3 mt-5">
+            {% if item.picture.url is not none %}
+            <img style="position: absolute; top: -5rem; left: 50%; border-radius: 50%; box-shadow: -.1rem 0rem .9rem 0 rgba(0, 0, 0, .5)"
+                src="{{ item.picture.url }}" alt="picture" width="150">
+            {% else %}
+            <img style="position: absolute; top: 0; left: 50%; border: .1rem solid #f6f6f6; border-radius: 50%;"
+                src="{% static 'accounts/img/default_image.png' %}" alt="picture">
+            {% endif %}
+            <div class="card-header pb-0">
+                <h6>{{ item.name }} {{ item.surname }} Card</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="row">
+                    <div class="table-responsive p-0 col-md-5">
+                        <table class="table">
+                            <tbody>
+                            <tbody>
+                                <tr>
+                                    <th colspan="2">
+                                        <p>Sender info</p>
+                                    </th>
+                                </tr>
+                            </tbody>
+                            <tr>
+                                <th>Name:</th>
+                                <th>{{ item.name }} {{ item.surname }}</th>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <th>{{ item.phone }}</th>
+                            </tr>
+                            <tr>
+                                <th>Second Phone:</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <th>{{ item.email }}</th>
+                            </tr>
+                            <tr>
+                                <th>Address:</th>
+                                <th>{{ item.address }}</th>
+                            </tr>
+                            <tr>
+                                <th>ID card:</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="btn btn-info">Change sender data</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-7">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="5">Last Orders</th>
+                                </tr>
+                            </thead>
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Track number</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Recipient info</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cost
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Discount</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in customer_orders %}
+                                <tr>
+                                    <th scope="row" class="text-xs text-secondary font-weight-bold mb-0">{{ item.id }}
+                                    </th>
+                                    <th scope="row" class="text-xs text-secondary font-weight-bold mb-0">
+                                        <a
+                                            href="{% url 'crm_employees:orderdetails' item.pk %}">{{ item.intarnational_track_number }}</a>
+                                    </th>
+                                    <th class="align-middle">
+                                        <div class="d-flex px-2 py-1">
+                                            <div>
+                                                {% if item.customer.picture.url is not none %}
+                                                <img src="{{ item.recipient.picture.url }}"
+                                                    class="avatar avatar-sm me-3" alt="user1">
+                                                {% else %}
+
+                                                {% endif %}
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ item.recipient.name }}
+                                                    {{ item.recipient.surname }}</h6>
+                                                <p class="text-xs text-secondary mb-0">{{ item.recipient.phone }}
+                                                </p>
+                                                <p class="text-xs text-secondary mb-0">{{ item.recipient.email }}
+                                                </p>
+                                                <p class="text-xs text-secondary mb-0">{{ item.recipient.address }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th class="text-xs text-secondary font-weight-bold mb-0">{{ item.total_amount }}
+                                    </th>
+                                    <th class="text-xs text-secondary font-weight-bold mb-0">{{ item.discount.value }}%
+                                    </th>
+                                    <th class="text-xs text-secondary font-weight-bold mb-0">
+                                        {% if item.completed_at is not none %}
+                                        <span class="badge badge-sm bg-gradient-success">Delivered</span>
+                                        {% else %}
+                                        <span class="badge badge-sm bg-gradient-secondary">in delivery</span>
+                                        {% endif %}
+                                    </th>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <nav class="mx-auto" aria-label="Page navigation example mt-4">
+                            <ul class="pagination">
+                                {% if customer_orders_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ customer_orders_obj.previous_page_number }}"
+                                        aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for page in customer_orders_obj.paginator.page_range %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                                {% endfor %}
+                                {% if customer_orders_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ customer_orders_obj.paginator.num_pages }}"
+                                        aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <hr />
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                            data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                            aria-selected="true">Recipients</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                            data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane"
+                            aria-selected="false">Complaints</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane"
+                            aria-selected="false">Feedback</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane"
+                            aria-selected="false">Consultations</button>
+                    </li>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
+                            aria-labelledby="home-tab" tabindex="0">...</div>
+                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                            tabindex="0">...</div>
+                        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                            tabindex="0">...</div>
+                        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                            tabindex="0">...</div>
+                    </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'crm_employees/inc/_side-panel.html' %}
+
+{% include 'crm_employees/inc/_footer.html' %}
+{% endblock %}

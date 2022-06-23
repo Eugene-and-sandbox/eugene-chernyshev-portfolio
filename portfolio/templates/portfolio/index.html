@@ -1,0 +1,448 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Eugene Chernyshev</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/templatemo-medic-care.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/default.styles.css' %}" rel="stylesheet">
+<!--
+
+TemplateMo 566 Medic Care
+
+https://templatemo.com/tm-566-medic-care
+
+-->
+    </head>
+    
+    <body id="top">
+    
+        <main>
+
+            <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
+                <div class="container">
+                    <a class="navbar-brand mx-auto d-lg-none" href="index.html">
+                        Eugene Chernyshev
+                        <strong class="d-block">Django developer</strong>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#hero">Skills</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">Introduce</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#timeline">Education</a>
+                            </li>
+
+                            <a class="navbar-brand d-none d-lg-block" href="index.html">
+                                Eugene Chernyshev
+                                <strong class="d-block">Django Developer</strong>
+                            </a>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#reviews">Diplomas</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#booking">Feedback</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact">Contacts</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+
+            <section class="hero" id="hero">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{% static 'images/slider/code.png' %}" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="heroText d-flex flex-column justify-content-center">
+
+                                <h1  style="text-align: left" class="mt-auto mb-2">
+                                I encode in
+                                    <div class="animated-info">
+                                        <span class="animated-item">HTML</span>
+                                        <span class="animated-item">CSS</span>
+                                        <span class="animated-item">Javascript</span>
+                                        <span class="animated-item">Django</span>
+                                        <span class="animated-item">Bootstrap</span>
+                                    </div>
+                                </h1>
+
+                                <p class="mb-4">On this site, I use a third-party template. My big downside is the lack of good artistic ability to create good page designs. So, I position myself as a backend developer, but I can change the template to adapt this template to my needs.</p>
+
+                                <div class="heroLinks d-flex flex-wrap align-items-center">
+                                    <a class="custom-link me-4" href="#about" data-hover="Learn More">Look my examples</a>
+
+                                    <p class="contact-phone mb-0"> or call to me:  063-227-9670</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding" id="about">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <h2 class="mb-lg-3 mb-3">Hello, I am Eugene</h2>
+
+                            <p>I am a Django Developer. I like this fantastic framework and enjoy working with this one. I created examples to introduce to you my skills in Django programming. It is 4 examples bellow: information site, small CRM (for employees and customers, separately), and e-commerce.</p>
+
+                            <p>You can order your site from me or call me to offer a job. My contact information and feedback form should find below on this site. I am free to propositions every day and ready to relocate to work fruitfully for the development of the company in a convenient place for the company.</p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-5 col-12 mx-auto">
+                            <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
+                                <!-- <p class="featured-text"><span class="featured-number">12</span> Years<br> of Experiences</p> -->
+                                <img src="{% static 'images/reviews/60136309_.jpg' %}" alt="" width="100%" style="border-radius: 50%;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-6 ps-0">
+                            <img src="{% static 'images/gallery/infosite.png' %}" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">
+                            <a href="{% url 'battle:home' %}" class="btn btn-primary mt-2" target="_blank">Django + Bootstrap</a>
+                        </div>
+
+                        <div class="col-lg-6 col-6 pe-0">
+                            <img src="{% static 'images/gallery/female-doctor-with-presenting-hand-gesture.jpg' %}" class="img-fluid galleryImage" alt="wear a mask" title="wear a mask to protect yourself">
+                        </div>
+
+                    </div>
+                    <div class="row mt-4">
+
+                        <div class="col-lg-6 col-6 ps-0">
+                            <img src="{% static 'images/gallery/employees.png' %}" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">
+                            <a href="{% url 'crm_employees:home' %}" class="btn btn-primary mt-2" target="_blank">Django + Bootstrap</a>
+                        </div>
+
+                        <div class="col-lg-6 col-6 pe-0">
+                            <img src="{% static 'images/gallery/female-doctor-with-presenting-hand-gesture.jpg' %}" class="img-fluid galleryImage" alt="wear a mask" title="wear a mask to protect yourself">
+                            <a href="{% url 'crm_customers:home' %}" class="btn btn-primary mt-2" target="_blank">Django + Bootstrap</a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding pb-0" id="timeline">
+                <div class="container">
+                    <div class="row">
+
+                        <h2 class="text-center mb-lg-5 mb-4">My education and courses</h2>
+                        
+                        <div class="timeline">
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">National Aviation University</h3>
+
+                                    <p>Bechelor, Security of information and communications systems.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-book timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2011-2016</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                                <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class="text-light">Quality Assurance Group</h3>
+                                    <p>Topics:</p>
+                                    <p class="mt--2 c-black mb-0 pb-0">- SDLC understanding</p> 
+                                    <p class="mt--05 c-black mb-0 pb-0">- Testing Process</p> 
+                                    <p class="mt--05 c-black mb-0 pb-0">- Requirements Analysis and Testing</p> 
+                                    <p class="mt--05 c-black mb-0 pb-0">- Test Design development</p>
+                                    <p class="mt--05 c-black mb-0 pb-0">- Test Design Techniques application</p> 
+                                    <p class="mt--05 c-black mb-0 pb-0">- Test Cases development</p>
+                                    <p class="mt--05 c-black mb-0 pb-0">- Creating and maintaining Traceability Matrix</p>
+                                    <p class="mt--05 c-black mb-0 pb-0">- Bug reporting</p>
+                                    <p class="mt--05 c-black">- Issue Tracking.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-book timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2013-2013</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class="text-light">SkillUP</h3>
+                                    <p>PHP Developer.</p>
+                                    <p style="margin-top: -2rem;">Topics:</p>
+                                    <ul style="margin-top: -1rem;">
+                                        <p class="mt--2 c-black">- HTML/CSS</p>
+                                        <p class="mt--2 c-black">- Bootstrap</p>
+                                        <p class="mt--2 c-black">- Git</p>
+                                        <p class="mt--2 c-black">- JavaScript</p>
+                                        <p class="mt--2 c-black">- jQuery</p>
+                                        <p class="mt--2 c-black">- MySQL</p>
+                                        <p class="mt--2 c-black">- PHP</p>
+                                        <p class="mt--2 c-black">- Laravel</p>
+                                    </ul>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-book timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2019-2019</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                                <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Logos IT Academy</h3>
+
+                                    <p class="">English. Pre-Intermediate</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-book timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2020-2021</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Logos IT Academy</h3>
+
+                                    <p>English. Intermediate</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-book timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>2020-2021</time>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding pb-0" id="reviews">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <h2 class="text-center mb-lg-5 mb-4">My Diplomas</h2>
+
+                            <div class="owl-carousel reviews-carousel">
+
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <img src="{% static 'images/reviews/1602226394477.jpg' %}" %} alt="">
+                                </figure>
+
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <img src="{% static 'images/reviews/1601684175538.jpg' %}" %} alt="">
+                                </figure>
+
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <img src="{% static 'images/reviews/1604565273258.jpg' %}" %} alt="">
+                                </figure>
+
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <img src="{% static 'images/reviews/1613816538732.jpg' %}" %} alt="">
+                                </figure>
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding" id="booking">
+                <div class="container">
+                    <div class="row">
+                    
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="booking-form">
+                                
+                                <h3 style="text-transform: uppercase;" class="text-center mb-lg-3 mb-2">use the feedback form to contact me</h3>
+
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="form-control" id="submit-button">send feedback</button>
+                                </form>
+                            
+                                <!-- <form role="form" action="#booking" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12">
+                                            <input type="text" name="name" id="name" class="form-control" placeholder="Full name" required>
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="telephone" name="phone" id="phone" class="form-control" placeholder="Phone: 123-456-7890">
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="text" name="name" id="name" class="form-control" placeholder="Company name" required>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="5" id="message" name="message" placeholder="Additional Message"></textarea>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                                            <button type="submit" class="form-control" id="submit-button">send feedback</button>
+                                        </div>
+                                    </div>
+                                </form> -->
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer section-padding" id="contact">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-5 me-auto col-12">
+                        <h5 class="mb-lg-4 mb-3">My contacts</h5>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex">
+                                Email
+                                <span><a href="mailto:eugene_chernyshev@yahoo.com">eugene_chernyshev@yahoo.com</a></span>
+                            </li>
+
+                            <li class="list-group-item d-flex">
+                                Phones
+                                <span>+38(063)227-96-70</span>
+                            </li>
+
+                            <li class="list-group-item d-flex">
+                                <span>+38(066)177-57-07</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 col-12 my-4 my-lg-0">
+                        <h5 class="mb-lg-4 mb-3">Place</h5>
+
+                        <p>My city of residence is Lviv<p>
+                        <p>I can consider relocation</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 ms-auto">
+                        <h5 class="mb-lg-4 mb-2">My Socials</h5>
+
+                        <ul class="social-icon">
+                            <li><a href="https://www.linkedin.com/in/eugene-chernyshev-79145886/" class="social-icon-link bi-linkedin" target="_blank" title="LinkedIn"></a></li>
+                            
+                            <li><a href="https://www.linkedin.com/in/eugene-chernyshev-79145886/" class="social-icon-link bi-github" target="_blank" title="Github"></a></li>
+
+                            <li><a href="https://www.facebook.com/eugene.chernishev" class="social-icon-link bi-facebook" target="_blank" title="Facebook"></a></li>
+                        </ul>
+
+                        <div>
+                            <p class="copyright-text">Template adaptation by Eugene Chernyshev</p>
+                            <p class="copyright-text">Template: Medic Care 2021</p> 
+                            <p>Design: <a href="https://templatemo.com" target="_parent">TemplateMo</a></p>
+                            <p class="copyright-text">Distributed By: <a href="https://themewagon.com" target="_parent">Themewagon</a></p>
+                        </div>
+                    </div>
+
+                   
+
+                </div>
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/scrollspy.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+<!--
+
+TemplateMo 566 Medic Care
+
+https://templatemo.com/tm-566-medic-care
+
+-->
+    </body>
+</html>

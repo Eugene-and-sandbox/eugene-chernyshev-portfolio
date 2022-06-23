@@ -1,0 +1,6 @@
+<form action="" method="post">
+    {% csrf_token %}
+    {{ update_user_form.as_p }}
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+

@@ -1,0 +1,57 @@
+{% extends 'crm_customers/layout.html' %}
+
+{% block title %}{% endblock %}
+{% block content %}
+    <div class="site-section">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 mt-5">
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-link active" id="nav-cis-tab" data-toggle="tab" href="#nav-home" role="tab"
+                               aria-controls="nav-home" aria-selected="true">Россия, Беларусь, Казахстан</a>
+                            <a class="nav-link" id="nav-ukraine-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                               aria-controls="nav-contact" aria-selected="false">Украина</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-cis-tab" role="tabpanel"
+                             aria-labelledby="nav-home-tab">
+                            <p class="text-danger mt-3"><b>Обратите, пожалуйста, ваше внимание на то, что в текущее время мы не принимаем заявки на доставку посылок в Беларусь и Казахстан</b></p>
+                            <p class="text-danger">Введите Ваш номер телефона в соответствующее поле ниже и мы Вам соообщим, когда возможность доставки появится</p>
+                            <p class="mt-5">Максимальная стоимость содержимого посылки, не облагаемая пошлиной, составляет 200 евро</p>
+                            <p>Максимально допустимый вес - 20 кг.</p>
+                            <p class="mt-5">Существует ограничение на отправку более пяти одинаковых предметов</p>
+                            <p class="4">При отправке одежды и обуви в посылке не должно быть больше 5 размеров (так как в декларации указывается, что это посылка - для личного пользования одной семье)</p>
+                            <ul>
+                                <p>Запрещенные предметы:</p>
+                                <li>Оружие, боеприпасы и взрывчатые вещества</li>
+                                <li>Наркотики и незаконные вещества</li>
+                                <li>Фейерверк, Пиротехника</li>
+                                <li>Табачные изделия</li>
+                                <li>Деньги</li>
+                                <li>Ювелирные изделия</li>
+                                <li>Скоропортящиеся продукты</li>
+                                <li>Непромышленно упакованная еда (можно только непортящиеся, до 5 кг в одной посылке)</li>
+                                <li>Еда, косметика, парфюмерия, домашняя химия во вскрытой упаковке</li>
+                                <li>Лекарства</li>
+                                <li>Алкоголь</li>
+                                <li>Мелкая бижутерия россыпью</li>
+                                <li>Запчасти </li>
+                                <li>Ручные инструменты и крепежные элементы россыпью</li>
+                                <li>Пробники духов и другой косметики/парфюмерии </li>
+                                <li>Посуда керамическая или стеклянная в количестве более 10 предметов</li>
+                                <li>Игрушки мелкие россыпью в количестве более 5 штук</li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="nav-ukraine-tab" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <p>В текущее время мы не принимаем заявки на доставку посылок в Украину.</p>
+                            <p>Введите Ваш номер телефона в соответствующее поле ниже и мы Вам соообщим, когда возможность доставки появится</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'crm_employees/_mini_window_base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-center text-center" style="height: 590px">
+    <form method="post">
+        {% csrf_token %}
+        <p>{{ form.parent_sender }}</p>
+        <p>{{ form.name }}</p>
+        <p>{{ form.surname }}</p>
+        <p>{{ form.phone }}</p>
+        <p>{{ form.email }}</p>
+        <p>{{ form.address }}</p>
+        <button type="submit" class="btn bg-gradient-primary mt-3" onclick="close_window(); return false">Create recipient</button>
+    </form>
+</div>
+{% endblock %}

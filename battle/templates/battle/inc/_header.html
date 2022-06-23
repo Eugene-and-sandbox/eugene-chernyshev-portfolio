@@ -1,0 +1,28 @@
+<header id="header">
+    <!-- Nav -->
+    <div id="nav">
+        <!-- Main Nav -->
+        <div id="nav-fixed">
+            <div class="container">
+                <!-- logo -->
+                <div class="nav-logo">
+                    <a href="{% url 'battle:home' %}" class="logo">Battle for Ukraine in UA</a>
+                </div>
+                <!-- /logo -->
+
+                <!-- nav -->
+                <ul class="nav-menu nav navbar-nav">
+                    <li><a href="{% url 'battle:daylist' %}">Таблиця днів</a></li>
+<!--                    <li><a href="category.html">Popular</a></li>-->
+                    <li class="cat-1"><a href="{% url 'battle:photo' %}">Photos</a></li>
+                    <li class="cat-2"><a href="{% url 'battle:video' %}">Videos</a></li>
+                    <li class="cat-3"><a href="{% url 'battle:audio' %}">Audios</a></li>
+<!--                    <li class="cat-4"><a href="{% url 'battle:articles' %}">Articles</a></li>-->
+                </ul>
+                <!-- /nav -->
+            </div>
+        </div>
+        <!-- /Main Nav -->
+    </div>
+    <!-- /Nav -->
+</header>

@@ -1,0 +1,37 @@
+{% extends 'unionsystem/customers/layout.html' %}
+
+{% block title %}{% endblock %}
+{% block content %}
+    <div class="site-section">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    {% if request.user.is_authenticated %}
+                        <form class="trip-form mt-5">
+                            <div class="row align-items-center">
+                                <div class="mb-3 mb-md-0 col-md-12 text-center">
+                                    Вы уже зарегестрированы и вошли в ваш личный кабинет
+                                </div>
+                            </div>
+                        </form>
+                    {% else %}
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <!--                    <p>{{ signup.username }}</p>-->
+                            <p>{{ signup.first_name }}</p>
+                            <p>{{ signup.last_name }}</p>
+                            <p>{{ signup.email }}</p>
+                            <p>{{ signup.password1 }}</p>
+                            <p>{{ signup.password2 }}</p>
+                            <button class="btn btn-primary btn-block">Зарегестрироваться</button>
+                        </form>
+                        <p class="mt-3 text-center">Уже зарегестрированы? <a href="{% url 'sign_in' %}">Войдите в
+                            личный кабинет</a></p>
+                    {% endif %}
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
