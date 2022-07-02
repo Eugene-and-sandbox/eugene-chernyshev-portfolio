@@ -1,0 +1,19 @@
+.button-radius {
+    border-radius: 0;
+}
+
+.link-button {
+    background-color: black;
+    color: white;
+}
+
+.link-button:hover {
+    background-color: #247CFF;
+    color: white;
+}
+
+.preview-img {
+    display: relative;
+}
+
+.preview-img .

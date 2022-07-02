@@ -13,14 +13,14 @@
 {% for item in day_review_page_obj %}
 <div class="col-md-4">
     <div class="post">
-        <a class="post-img" href="{% url 'review' item.pk %}"><img
+        <a class="post-img" href="{% url 'battle:review' item.pk %}"><img
                 src="{{ item.daily_image | default:'default_image.png' }}" alt=""></a>
         <div class="post-body">
             <div class="post-meta">
                 <span class="post-category cat-2">Day {{ item.day_number }}</span>
                 <span class="post-date">{{ item.date }}</span>
             </div>
-            <h3 class="post-title"><a href="{% url 'review' item.pk %}">{{ item.day_title }}</a></h3>
+            <h3 class="post-title"><a href="{% url 'battle:review' item.pk %}">{{ item.day_title }}</a></h3>
         </div>
     </div>
 </div>

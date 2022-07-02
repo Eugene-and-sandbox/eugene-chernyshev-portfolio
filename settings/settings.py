@@ -14,7 +14,9 @@ SECRET_KEY = 'django-insecure-vss)-y@=g9)sqrj6vmy+9t4x4i$k3dfr9^&_%v7k!y6eh#9xje
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.0.101', '192.168.0.102', '192.168.0.103', '192.168.0.104', '192.168.0.105', '192.168.0.106']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.0.101',
+'192.168.0.102', '192.168.0.103', '192.168.0.104',
+'192.168.0.105', '192.168.0.106']
 
 
 # Application definition
@@ -31,6 +33,7 @@ INSTALLED_APPS = [
     'battle.apps.BattleConfig',
     'crm_customers.apps.CrmCustomersConfig',
     'crm_employees.apps.CrmEmployeesConfig',
+    'shop.apps.ShopConfig',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +59,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shop.context_processors.add_default_data',
             ],
         },
     },

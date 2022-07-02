@@ -28,6 +28,8 @@
         <link href="{% static 'css/templatemo-medic-care.css' %}" rel="stylesheet">
 
         <link href="{% static 'css/default.styles.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/additional.css' %}" rel="stylesheet">
 <!--
 
 TemplateMo 566 Medic Care
@@ -157,7 +159,9 @@ https://templatemo.com/tm-566-medic-care
 
                         <div class="col-lg-6 col-6 ps-0">
                             <img src="{% static 'images/gallery/infosite.png' %}" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">
-                            <a href="{% url 'battle:home' %}" class="btn btn-primary mt-2" target="_blank">Django + Bootstrap</a>
+                            <p style="position: relative;">
+                                <a href="{% url 'battle:home' %}" class="btn link-button button-radius mt-2 w-100 ml-auto" target="_blank">Django + Bootstrap</a>
+                            </p>
                         </div>
 
                         <div class="col-lg-6 col-6 pe-0">
@@ -169,12 +173,12 @@ https://templatemo.com/tm-566-medic-care
 
                         <div class="col-lg-6 col-6 ps-0">
                             <img src="{% static 'images/gallery/employees.png' %}" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">
-                            <a href="{% url 'crm_employees:home' %}" class="btn btn-primary mt-2" target="_blank">Django + Bootstrap</a>
+                            <a href="{% url 'crm_employees:home' %}" class="btn link-button button-radius w-100 mt-2" target="_blank">Django + Bootstrap</a>
                         </div>
 
                         <div class="col-lg-6 col-6 pe-0">
                             <img src="{% static 'images/gallery/female-doctor-with-presenting-hand-gesture.jpg' %}" class="img-fluid galleryImage" alt="wear a mask" title="wear a mask to protect yourself">
-                            <a href="{% url 'crm_customers:home' %}" class="btn btn-primary mt-2" target="_blank">Django + Bootstrap</a>
+                            <a href="{% url 'crm_customers:home' %}" class="btn link-button button-radius w-100 mt-2" target="_blank">Django + Bootstrap</a>
                         </div>
 
                     </div>
