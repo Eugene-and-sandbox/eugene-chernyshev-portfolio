@@ -45,7 +45,18 @@ class ProductModel(models.Model):
     in_stock = models.BooleanField(default=False)
     description = models.TextField()
     category = models.ForeignKey(ProductCategoryModel, db_index=True, on_delete=models.PROTECT)
-    main_photo = models.ImageField(upload_to='media/shop/products/')
+    image = models.ImageField(upload_to='media/shop/products/')
+
+    count = 1
+
+    def get_count(self):
+        return self.count
+
+    def get_sum_price(self):
+        return self.count * self.price
+
+    def sum_in_cart(self):
+        pass
 
     def __str__(self):
         return '{0}: {1}, {2}'.format(self.name, self.price, self.in_stock)

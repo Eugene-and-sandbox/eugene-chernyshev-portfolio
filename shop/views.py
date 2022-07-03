@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.views import generic
+from django.http import Http404
 
 from shop.models import ProductModel
 
@@ -45,9 +46,18 @@ def cart(request):
     cart_info = request.session.get('cart_info')
     products = []
     if cart_info:
-        for product.id in cart_info:
-            product = get_object_or_404(ProductModel, pk=product_id)
-    return render(request, 'shop/cart.html')
+        for product_id in cart_info:
+            # product = get_object_or_404(ProductModel, pk=product_id)
+            try:
+                product = ProductModel.objects.get(pk=product_id)
+                product.count = cart_info[product_id]
+                products.append(product)
+            except ProductModel.DoesNotExist:
+                raise Http404()
+    context = {
+        'products': products
+    }
+    return render(request, 'shop/cart.html', context=context)
 
 
 @login_required(login_url='accounts:signin')

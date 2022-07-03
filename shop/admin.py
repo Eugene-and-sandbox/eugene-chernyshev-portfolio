@@ -29,18 +29,18 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(ProductModel)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['main_photo', 'name', 'price', 'in_stock', 'description']
+    list_display = ['image', 'name', 'price', 'in_stock', 'description']
     list_display_links = ['name']
     inlines = [ProductAdditionalInline]
 
 
-    def main_photo(self, obj):
-        if obj.main_photo:
-            return mark_safe(f'<img src="{obj.main_photo.url}">')
+    def image(self, obj):
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}">')
         else:
             '-'
 
-    main_photo.short_description = 'Photo'
+    image.short_description = 'Photo'
 
 
 @admin.register(OrderModel)
